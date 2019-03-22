@@ -1,0 +1,13 @@
+throw new ArgumentNullException
+ArgumentNullException e = new ArgumentNullException
+throw new ArgumentNullExceptiongetContractNameFromPartType));
+throw new ArgumentNullExceptionSR.ConcurrentDictionary_ItemKeyIsNull);
+internal static Exception ArgumentNull(string message) => new ArgumentNullException
+internal static Exception ArgumentNull(string paramName) => new ArgumentNullException
+ThrowArgumentNullException
+private static Exception _ArgumentNull(string paramName, string msg) => TraceExceptionAsReturnValue(new ArgumentNullException
+private static Exception CreateArgumentNullException
+return (name == null) ? new ArgumentNullExceptionargumentName);
+return new ArgumentNullException
+return TraceExceptionAsReturnValue(new ArgumentNullException
+ThrowHelperError(new ArgumentNullException
