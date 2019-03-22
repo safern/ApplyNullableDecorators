@@ -9,14 +9,14 @@ To run the tool just run: `dotnet run -- [action] [args]` under the `src` direct
 The tool has 2 actions, `apply` and `apistats`. These are the arguments that can be passed per each action:
 ```
 ApplyNullableDecorators.exe apply project type [-msbuild value]
-  - project : CS Project containing type to annotate (string, required)
-  - type    : Full type name to apply decorators to (string, required)
-  - msbuild : Full path of MSBuild instance to use to load the workspace (string, default=)
+  - project   : CS Project containing type to annotate (string, required)
+  - type      : Full type name to apply decorators to (string, required)
+  - [msbuild] : Full path of MSBuild instance to use to load the workspace (string, default=)
 
  ApplyNullableDecorators.exe apistats project jetbrainsfiles [-msbuild value]
   - project        : CS Project containing type to annotate (string, required)
   - jetbrainsfiles : JetBrains files separated by ; (string, required)
-  - msbuild        : Full path of MSBuild instance to use to load the workspace (string, default=)
+  - [msbuild]      : Full path of MSBuild instance to use to load the workspace (string, default=)
 ```
 
 ### apply
