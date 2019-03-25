@@ -4,6 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <Langversion>latest</Langversion>
+    <PackAsTool>true</PackAsTool>
+    <PackageOutputPath>$(OutDir)</PackageOutputPath>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,5 +17,11 @@
     <PackageReference Include="Microsoft.Build.Locator" Version="1.2.2" />
     <PackageReference Include="Microsoft.Build" Version="15.9.20" ExcludeAssets="Runtime"/>
     <PackageReference Include="Microsoft.Build.Framework" Version="15.9.20" ExcludeAssets="Runtime"/>
+
+    <PackageReference Include="Nerdbank.GitVersioning">
+      <Version>2.2.13</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>
