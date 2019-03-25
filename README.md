@@ -35,7 +35,7 @@ with `?` annotations.
 
 Prints a summary of total number of public and internal/private APIs that are in the project.
 
-    usage: apply-nullable-decorators apply <project> <type> [-msbuild value]
+    usage: apply-nullable-decorators apistats <project> <jetbrainsfiles> [-msbuild value]
 
     Options:
     <project>           CS Project containing type to annotate (string, required)
