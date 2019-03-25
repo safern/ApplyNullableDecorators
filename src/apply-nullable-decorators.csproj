@@ -4,6 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <Langversion>latest</Langversion>
+    <PackAsTool>true</PackAsTool>
+    <PackageOutputPath>$(OutDir)</PackageOutputPath>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
