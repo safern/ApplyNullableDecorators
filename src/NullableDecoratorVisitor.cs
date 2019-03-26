@@ -119,6 +119,14 @@ namespace ApplyNullableDecorators
             {
                 if (semanticModel.GetSymbolInfo(invocationNode).Symbol is IMethodSymbol symbolModel)
                 {
+                    // Interlocked gives a lot of false positives, so if the method is using Interlocked, let's not annotate it.
+                    if (symbolModel.ContainingType.Name == "Interlocked")
+                    {
+                        var _result = new DeclarationNodeContainer(node, true);
+                        _visitedNodes.Add(methodDocumenationCommentId, _result);
+                        return _result;
+                    }
+
                     DeclarationNodeContainer visitedInvocationNode = default;
                     IEnumerable<IdentifierNameSyntax> invocationIdentifiers = invocationNode.ArgumentList.DescendantNodes().OfType<IdentifierNameSyntax>().Where(idn => idn.Parent is ArgumentSyntax);
                     string invocationDocumentationId = symbolModel.GetDocumentationCommentId();
