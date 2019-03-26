@@ -123,6 +123,11 @@ namespace ApplyNullableDecorators
                     IEnumerable<IdentifierNameSyntax> invocationIdentifiers = invocationNode.ArgumentList.DescendantNodes().OfType<IdentifierNameSyntax>().Where(idn => idn.Parent is ArgumentSyntax);
                     string invocationDocumentationId = symbolModel.GetDocumentationCommentId();
 
+                    if (string.Equals(methodDocumenationCommentId,invocationDocumentationId))
+                    {
+                        continue;
+                    }
+
                     if (symbolModel.ContainingType != symbol.ContainingType)
                     {
                         continue;
