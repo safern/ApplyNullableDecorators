@@ -20,6 +20,10 @@ namespace ApplyNullableDecorators
         [ArgumentGroup(nameof(CommandLineActionGroup.apistats))]
         public string MSBuildInstance { get; set; }
 
+        [OptionalArgument(true, "enablenullable", "Switch to determine if we should add #nullable enable/restore to the file")]
+        [ArgumentGroup(nameof(CommandLineActionGroup.apply))]
+        public bool EnableNullableInFiles { get; set; }
+
         [RequiredArgument(1, "type", "Full type name to apply decorators to")]
         [ArgumentGroup(nameof(CommandLineActionGroup.apply))]
         public string Type { get; set; }

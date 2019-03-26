@@ -49,7 +49,7 @@ namespace ApplyNullableDecorators
 
             if (options.Action == CommandLineActionGroup.apply)
             {
-                AddNullableAnnotations(compilation, options.Type);
+                AddNullableAnnotations(compilation, options.Type, options.EnableNullableInFiles);
                 return;
             }
 
@@ -80,8 +80,9 @@ namespace ApplyNullableDecorators
             Console.WriteLine($"TOTAL PUBLIC APIS IN JETBRAINS WITHOUT NULL DATA: {visitor.PublicApisInJetBrainsWithoutNullAttribute}");
         }
 
-        private static void AddNullableAnnotations(Compilation compilation, string typeName)
+        private static void AddNullableAnnotations(Compilation compilation, string typeName, bool enableNullableInFiles)
         {
+            Console.WriteLine($"Adding annotations to type: {typeName}");
             if (compilation != null)
             {
                 INamedTypeSymbol type = compilation.Assembly.GetTypeByMetadataName(typeName);
@@ -110,6 +111,16 @@ namespace ApplyNullableDecorators
                 foreach (Location location in type.Locations)
                 {
                     SyntaxNode modifiedRoot = visitor.Visit(location.SourceTree.GetRoot());
+
+                    if (enableNullableInFiles && !modifiedRoot.ToFullString().Contains("#nullable"))
+                    {
+                        modifiedRoot = modifiedRoot.WithLeadingTrivia(modifiedRoot.GetLeadingTrivia().Concat(new SyntaxTrivia[]
+                        {
+                            SyntaxFactory.SyntaxTrivia(SyntaxKind.DisabledTextTrivia, "#nullable enable"),
+                            SyntaxFactory.SyntaxTrivia(SyntaxKind.EndOfLineTrivia, "\n")
+                        }));
+                    }
+
                     File.WriteAllText(location.SourceTree.FilePath, modifiedRoot.ToFullString());
                 }
             }
