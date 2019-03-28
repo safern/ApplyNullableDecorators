@@ -102,7 +102,7 @@ namespace ApplyNullableDecorators
                     SyntaxNode root = location.SourceTree.GetRoot();
                     foreach (MethodDeclarationSyntax methodDeclaration in root.DescendantNodes().OfType<MethodDeclarationSyntax>())
                     {
-                        allMethodDeclarations.Add(semanticModel.GetDeclaredSymbol(methodDeclaration).GetDocumentationCommentId(), methodDeclaration);
+                        allMethodDeclarations.TryAdd(semanticModel.GetDeclaredSymbol(methodDeclaration).GetDocumentationCommentId(), methodDeclaration);
                     }
                 }
 
